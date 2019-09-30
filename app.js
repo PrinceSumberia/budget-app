@@ -7,19 +7,20 @@ const budgetController = (function () {
             this.value = value;
             this.precentage = -1;
         }
+
+        calcPercentage(totalIncome) {
+            if (totalIncome > 0) {
+                this.precentage = Math.round(this.value / totalIncome * 100);
+            } else {
+                this.precentage = -1;
+            }
+        };
+
+        getPercentage() {
+            return this.precentage;
+        };
     }
 
-    Expense.prototype.calcPercentage = function (totalIncome) {
-        if (totalIncome > 0) {
-            this.precentage = Math.round(this.value / totalIncome * 100);
-        } else {
-            this.precentage = -1;
-        }
-    };
-
-    Expense.prototype.getPercentage = function () {
-        return this.precentage;
-    };
 
     class Income {
         constructor(id, description, value) {
